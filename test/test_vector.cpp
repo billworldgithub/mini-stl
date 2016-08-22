@@ -145,3 +145,29 @@ TEST(TestVector,Operation)
     vect.clear();
     EXPECT_EQ(vect.size(),0);
 }
+
+TEST(TestVector,ReverseIterator)
+{
+    vector<int> vect;
+    vect.push_back(1);
+    vect.push_back(2);
+    vect.push_back(3);
+
+    vector<int>::reverse_iterator iter = vect.rbegin();
+    EXPECT_EQ(3,*iter);
+    ++iter;
+    EXPECT_EQ(2,*iter);
+    ++iter;
+    EXPECT_EQ(1,*iter);
+    ++iter;
+    --iter;
+    EXPECT_EQ(1,*iter);
+    --iter;
+    EXPECT_EQ(2,*iter);
+    --iter;
+    EXPECT_EQ(3,*iter);
+
+    //
+    iter = vect.rbegin();
+    EXPECT_EQ(1,*(iter+2));
+}

@@ -5,6 +5,7 @@
 #define STL_BEGIN_NAMESPACE namespace mini_stl{
 #define STL_END_NAMESPACE   }
 
+#include <iostream>
 using std::cout;
 using std::endl;
 

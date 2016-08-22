@@ -8,8 +8,9 @@
 #include "alloc_imp.h"
 #include "construct.h"
 #include "uninitialized.h"
-#include <iostream>
-#include <algorithm>
+#include "algobase.h"
+#include "iterator_imp.h"
+
 
 //定义命名空间
 STL_BEGIN_NAMESPACE
@@ -67,7 +68,6 @@ protected:
 };
 
 
-
 ////////////////////////////////////
 //vector类实现
 template <class Tp,class Alloc = STL_DEFAULT_ALLOCATOR(Tp)>
@@ -98,10 +98,11 @@ public:
         return Base::get_allocator();
     }
 
-//    typedef reverse_iterator<const_iterator,value_type,const_reference,
-//        difference_type> const_reverse_iterator;
-//    typedef reverse_iterator<iterator,value_type,reference,difference_type>
-//        reverse_iterator;
+    //反向迭代器
+    typedef reverse_iterator<const_iterator,value_type,const_reference,
+        difference_type> const_reverse_iterator;
+    typedef reverse_iterator<iterator,value_type,reference,difference_type>
+        reverse_iterator;
 
 protected:
 
@@ -177,25 +178,25 @@ public:
         return finish;
     }
 
-//    reverse_iterator rbegin()
-//    {
-//        return reverse_iterator(end());
-//    }
+    reverse_iterator rbegin()
+    {
+        return reverse_iterator(end());
+    }
 
-//    const_reverse_iterator rbegin() const
-//    {
-//        return const_reverse_iterator(end());
-//    }
+    const_reverse_iterator rbegin() const
+    {
+        return const_reverse_iterator(end());
+    }
 
-//    reverse_iterator rend()
-//    {
-//        return reverse_iterator(begin());
-//    }
+    reverse_iterator rend()
+    {
+        return reverse_iterator(begin());
+    }
 
-//    const_reverse_iterator rend() const
-//    {
-//        return const_reverse_iterator(begin());
-//    }
+    const_reverse_iterator rend() const
+    {
+        return const_reverse_iterator(begin());
+    }
 
     //返回元素个数，不过这里可能有bug
     size_type size() const
